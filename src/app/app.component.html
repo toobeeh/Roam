@@ -1,23 +1,32 @@
 <!-- main wrapper -->
-<div style="width: 100vw; height: 100vh; margin:0; background:black;">
+<div id="main" style="width: 100vw; position:relative; height: 100vh; margin:0; background:black;">
 
-  <!-- sidenav container -->
-  <div id="sidenav">
+  <!-- sidenav wrapper -->
+  <div id="sidenavWrap">
 
-    <!-- logo -->
-    <div id="navLogo"></div>
+    <!-- sidenav overlay -->
+    <div id="navOverlay"></div>
 
-    <!-- homepage -->
-    <a class="navEntry" tabindex="0" (keydown.enter)="this.router.navigate([''])" (click)="this.router.navigate([''])">
-      <i class="material-icons-round">home</i>
-      <span class="navText">Home</span>
-    </a>
+    <!-- sidenav container -->
+    <div id="sidenav">
 
-    <!-- search -->
-    <a class="navEntry" tabindex="0" (keydown.enter)="this.router.navigate(['search'])" (click)="this.router.navigate(['search'])">
-      <i class="material-icons-round">search</i>
-      <span class="navText">Search</span>
-    </a>
+      <!-- logo -->
+      <div id="navLogo"></div>
+
+      <!-- homepage -->
+      <a class="navEntry" tabindex="0" (keydown.enter)="this.router.navigate([''])"
+        (click)="this.router.navigate([''])">
+        <i class="material-icons-round">home</i>
+        <span class="navText">Home</span>
+      </a>
+
+      <!-- search -->
+      <a class="navEntry" tabindex="0" (keydown.enter)="this.router.navigate(['search'])"
+        (click)="this.router.navigate(['search'])">
+        <i class="material-icons-round">search</i>
+        <span class="navText">Search</span>
+      </a>
+    </div>
   </div>
 
   <!-- content container -->

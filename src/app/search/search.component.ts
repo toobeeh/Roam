@@ -36,7 +36,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     GridNav.navGrid?.stop();
 
     /* start search grid */
-    this.searchnav.elements.push(document.querySelector("app-search input") as HTMLElement);
+    this.searchnav.elements = [document.querySelector("app-search input") as HTMLElement];
     this.searchnav.activeElement = this.searchnav.elements[0];
     this.searchnav.activeElement.focus();
     this.searchnav.listen();

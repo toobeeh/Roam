@@ -33,6 +33,7 @@
   padding: 1rem;
   outline: none;
   box-shadow: 0px 0px rgb(1,180,228);
+  font-family: 'Brandon Grotesque';
 }
 
 .navEntry:is(:hover, :focus, :active){
@@ -69,8 +70,22 @@
 #navLogo{
   background-image: url(https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg);
   height:4rem;
-  backgroud-size:contain;
+  background-size:contain;
   width:100%;
   background-repeat: no-repeat;
   background-position: left;
+}
+
+#sidenavWrap:is(:hover, :focus, :active, :focus-within) #navOverlay{
+  position:fixed;
+  inset:0;
+  opacity: 0.6;
+}
+
+#navOverlay{
+  transition: all .2s;
+  background:black;
+  opacity: 0;
+  z-index: 100;
+  pointer-events: none;
 }
