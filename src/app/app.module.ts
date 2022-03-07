@@ -8,6 +8,8 @@ import { TmdbAPIService } from './tmdb-api.service';
 import { SearchComponent } from './search/search.component';
 import { TitleCardComponent } from './title-card/title-card.component';
 import { MovieComponent } from './movie/movie.component';
+import { SeriesComponent } from './series/series.component';
+import { SeasonComponent } from './season/season.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { MovieComponent } from './movie/movie.component';
     HomeComponent,
     SearchComponent,
     TitleCardComponent,
-    MovieComponent
+    MovieComponent,
+    SeriesComponent,
+    SeasonComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,57 @@
+*{
+  color: white;
+}
+
+:host(app-movie){
+  position:relative;
+}
+
+#backdrop{
+  position: relative;
+}
+
+#backdrop img{
+  width:100%;
+}
+
+#backdrop > div{
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8102591378348214) 50%, rgba(0,0,0,0.2) 100%);
+  position: absolute;
+  inset: 0;
+  padding:3rem;
+  display:flex;
+  flex-direction: column;
+  justify-content:end;
+}
+
+#seasonsContainer{
+  padding: 2rem;
+  display:flex;
+  flex-wrap: wrap;
+  place-content: center;
+  gap:5rem;
+}
+
+.seasonCard{
+  cursor: pointer;
+  border-radius: 1rem;
+  border-radius: 1rem;
+  display:flex;
+  background-image: linear-gradient(to bottom, rgb(30, 213, 169) 0%, rgb(1, 180, 228) 100%);
+  transition: all .2s;
+  transform: translate(0,0);
+}
+
+.seasonCard img{
+  transition: all .2s;
+  transform: translate(0,0);
+}
+
+.seasonCard:is(:hover, :focus, :focus-within, :active) img{
+  transform: translate(-1rem,0) scale(1.02);
+  box-shadow: -5px -5px rgb(1,180,228), 5px 5px rgb(30, 213, 169);
+}
+
+.seasonCard:is(:hover, :focus, :focus-within, :active){
+  transform: scale(0.98);
+}

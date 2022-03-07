@@ -5,6 +5,7 @@
   font-family: "Iunito";
   font-weight: 500;
   box-sizing: border-box;
+  outline: none;
 }
 
 body{
@@ -14,4 +15,9 @@ body{
 
 a{
   text-decoration: none;
+}
+
+i.material-icons-round{
+  vertical-align:bottom;
+  font-size: 1.5em;
 }

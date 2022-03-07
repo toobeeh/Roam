@@ -15,6 +15,8 @@ export class MovieComponent implements OnInit {
   movieID!: number;
   playerURL: SafeResourceUrl = "";
   movie!: MovieResponse;
+  cast?: string = "";
+  genres?: string = "";
 
   constructor(private activatedRoute: ActivatedRoute, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer) { }
 
@@ -25,8 +27,8 @@ export class MovieComponent implements OnInit {
       const info = await this.tmdbService.api.movieInfo(this.movieID);
       this.movie = info;
       this.playerURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.2embed.ru/embed/tmdb/movie?id=' + this.movie.id);
-      //this.playerURL = 'https://www.2embed.ru/embed/tmdb/movie?id=' + this.movie.id;
+      this.cast = (await this.tmdbService.api.movieCredits(this.movieID)).cast?.slice(0,4).map(c => c.name + " (" + c.character + ")").join(", ");
+      this.genres = this.movie.genres?.map(g => g.name).join(", ");
     });
   }
-
 }

@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MovieComponent } from './movie/movie.component';
 import { SearchComponent } from './search/search.component';
+import { SeasonComponent } from './season/season.component';
+import { SeriesComponent } from './series/series.component';
 
 const routes: Routes = [
   {
@@ -14,6 +16,12 @@ const routes: Routes = [
   },{
     path: "movie/:id",
     component: MovieComponent
+  },{
+    path: "series/:id",
+    component: SeriesComponent
+  },{
+    path: "series/:seriesid/season/:seasonid",
+    component: SeasonComponent
   }
 ];
 

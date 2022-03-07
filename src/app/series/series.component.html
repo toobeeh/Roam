@@ -1,0 +1,46 @@
+<!-- head area with background image and gradient -->
+<div id="backdrop" >
+
+  <!-- background poster -->
+  <img src="https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/{{series.backdrop_path}}">
+
+  <!-- title infos -->
+  <div>
+
+    <!-- movie name -->
+    <h1 tabindex="0" style="font-size:3rem; font-weight:800; font-family: 'Brandon Grotesque'; letter-spacing: .07rem">{{series.name}}</h1>
+
+    <!-- genres -->
+    <div style="width:40%; font-weight:800; margin: 1rem; opacity: .8; font-size: medium">{{genres}}</div>
+
+    <!-- movie desc -->
+    <div style="width:40%; font-weight:500; margin: 1rem">{{series.overview}}</div>
+
+    <!-- movie details grid -->
+    <div style="width:40%; font-weight:500; place-content: center; margin: 1rem; display:grid; grid-template-columns:repeat(4,1fr); gap: 1rem; opacity: .5; font-size:small">
+      <div><i class="material-icons-round">playlist_play</i> {{series.seasons!.length}} seasons</div>
+      <div><i class="material-icons-round">podcasts</i>{{series.first_air_date}}</div>
+      <div style="text-transform: uppercase"><i class="material-icons-round">translate</i> {{series.original_language}}</div>
+      <div style="text-transform: uppercase"><i class="material-icons-round">star</i> {{series.vote_average}} / 10</div>
+      <div style="grid-column-start: 1; grid-column-end: 5">{{cast}}</div>
+    </div>
+  </div>
+</div>
+
+<!-- seasons -->
+<div id="seasonsContainer">
+  <div
+    tabindex="0"
+    *ngFor="let season of series.seasons"
+    class="seasonCard"
+    (click)="router.navigate(['/series/' + series.id + '/season/' + season.id])"
+    (keydown.enter)="router.navigate(['/series/' + series.id + '/season/' + season.id])"
+  >
+    <img style="border-radius: 1rem;aspect-ratio: 2/3; height: 15rem;" src="https://image.tmdb.org/t/p/w440_and_h660_face/{{season.poster_path}}">
+    <div style="height:100%; padding: 1rem;display:flex; flex-direction: column; gap: 1rem;">
+      <h2 style="font-family: 'Brandon Grotesque';">{{season.name}}</h2>
+      <span style="font-size: small; opacity: .8">{{season.air_date}}</span>
+      <span style="font-size: small; opacity: .8">{{season.episode_count}} Episodes</span>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,37 @@
+<!-- head area with background image and gradient -->
 <div id="backdrop" >
+
+  <!-- background poster -->
   <img src="https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/{{movie.backdrop_path}}">
+
+  <!-- title infos -->
   <div>
+
+    <!-- movie name -->
     <h1 tabindex="0" style="font-size:3rem; font-weight:800; font-family: 'Brandon Grotesque'; letter-spacing: .07rem">{{movie.title}}</h1>
+
+    <!-- genres -->
+    <div style="width:40%; font-weight:800; margin: 1rem; opacity: .8; font-size: medium">{{genres}}</div>
+
+    <!-- movie desc -->
     <div style="width:40%; font-weight:500; margin: 1rem">{{movie.overview}}</div>
-    <div style="width:40%; font-weight:500; margin: 1rem;">{{movie.runtime}} min | {{movie.release_date}}</div>
+
+    <!-- movie details grid -->
+    <div style="width:40%; font-weight:500; place-content: center; margin: 1rem; display:grid; grid-template-columns:repeat(4,1fr); gap: 1rem; opacity: .5; font-size:small">
+      <div><i class="material-icons-round">hourglass_empty</i> {{movie.runtime}} min</div>
+      <div><i class="material-icons-round">event</i> {{movie.release_date}}</div>
+      <div style="text-transform: uppercase"><i class="material-icons-round">translate</i> {{movie.original_language}}</div>
+      <div style="text-transform: uppercase"><i class="material-icons-round">star</i> {{movie.vote_average}} / 10</div>
+      <div style="grid-column-start: 1; grid-column-end: 5">{{cast}}</div>
+    </div>
   </div>
 </div>
-<iframe tabindex="0" style="width:100%; border: none; height:50vh"
+
+<!-- hint -->
+<div style="text-align:center; padding: 2rem; opacity:.5; font-weight:800; letter-spacing: 0.05rem;">Use the embed below to stream the movie from a third-party host. Popup-Blocker recommended.</div>
+
+<!-- player iframe -->
+<iframe tabindex="0" style="width:80%; border: none; height:50vh; margin: 10%; margin-top: 2rem; border-radius: 1.5rem;"
   allowfullscreen
   [src]="playerURL"
 ></iframe>
