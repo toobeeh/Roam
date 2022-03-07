@@ -1,0 +1,26 @@
+<!-- content grid -->
+<div id="homeGrid">
+
+  <!-- series group -->
+  <div class="homeGroupWrap">
+    <div class="homeGroup">
+      Trending Series
+    </div>
+  </div>
+
+  <!-- series cards -->
+  <app-title-card *ngFor="let tv of popularTV" [title]="tv"></app-title-card>
+
+  <!-- movies group -->
+  <div class="homeGroupWrap">
+    <div class="homeGroup">
+      Trending Movies
+    </div>
+  </div>
+
+  <!-- series cards -->
+  <app-title-card *ngFor="let mv of popularMovies" [title]="mv"></app-title-card>
+
+  <!-- banner -->
+  <div id="homeLogoContainer"></div>
+</div>

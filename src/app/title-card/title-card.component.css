@@ -1,0 +1,66 @@
+:host(app-title-card){
+  display: grid;
+  justify-items: center;
+  align-content: start;
+}
+.homePoster{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 9rem;
+  aspect-ratio: 2/3;
+  border-radius: 1rem;
+  box-shadow: 0px 0px rgb(1,180,228);
+  transform: translate(0,0);
+  transition: all 0.15s;
+  outline: none;
+  cursor: pointer;
+  background-color:darkGray;
+  position: relative;
+}
+
+.homePoster.big{
+  width:11rem;
+}
+
+.homePoster:is(:hover, :active, :focus){
+  box-shadow: 5px 5px rgb(1,180,228), -5px -5px rgb(30, 213, 169);
+  transform: translate(-2px, -2px);
+}
+
+.caption{
+  color: white;
+  margin: 1rem;
+  width: 10rem;
+  font-weight: 700;
+  letter-spacing: 0.03rem;
+}
+
+.date{
+  color: white;
+  opacity: 0.7;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.03rem;
+}
+
+.typeBadge{
+  position: absolute;
+  padding:0.25rem;
+  background-color: rgb(1,180,228);
+  color:white;
+  bottom: -0.5rem;
+  left:-0.8rem;
+  border-radius: .3rem;
+  font-size:.9rem;
+}
+
+.ratingBadge{
+  position: absolute;
+  padding:0.25rem;
+  color:white;
+  bottom: 1.5rem;
+  left:-0.8rem;
+  border-radius: .3rem;
+  font-size:.9rem;
+}

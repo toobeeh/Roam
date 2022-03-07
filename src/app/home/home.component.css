@@ -1,0 +1,48 @@
+:host(app-home){
+  flex-grow:2;
+}
+
+#homeGrid {
+  padding: 2rem;
+  display: grid;
+  place-content: center;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+#homeLogoContainer{
+  background-image: url(https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg);
+  height: 15rem;
+  background-repeat: no-repeat;
+  background-position: center top;
+  grid-row-start: 2;
+  grid-column-start: 3;
+  grid-column-end: 6;
+  margin: 1rem;
+  margin-bottom:2rem;
+}
+
+.homeGroupWrap{
+  display:grid;
+  width:100%;
+  height: 100%;
+  justify-items: center;
+  align-content: start;
+}
+
+.homeGroup{
+  width:9rem;
+  aspect-ratio: 2/3;
+  border-radius: 1rem;
+  background-image: linear-gradient(to right, rgb(30, 213, 169) 0%, rgb(1, 180, 228) 100%);
+  color: white;
+  vertical-align: middle;
+  font-size: 2rem;
+  display: grid;
+  pointer-events: none;
+  place-content: center;
+  text-align: center;
+  font-family: 'Brandon Grotesque'
+}

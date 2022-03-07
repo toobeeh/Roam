@@ -1,0 +1,28 @@
+<!-- main wrapper -->
+<div style="width: 100vw; height: 100vh; margin:0; background:black;">
+
+  <!-- sidenav container -->
+  <div id="sidenav">
+
+    <!-- logo -->
+    <div id="navLogo"></div>
+
+    <!-- homepage -->
+    <a class="navEntry" tabindex="0" (keydown.enter)="this.router.navigate([''])" (click)="this.router.navigate([''])">
+      <i class="material-icons-round">home</i>
+      <span class="navText">Home</span>
+    </a>
+
+    <!-- search -->
+    <a class="navEntry" tabindex="0" (keydown.enter)="this.router.navigate(['search'])" (click)="this.router.navigate(['search'])">
+      <i class="material-icons-round">search</i>
+      <span class="navText">Search</span>
+    </a>
+  </div>
+
+  <!-- content container -->
+  <div id="pageContent">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

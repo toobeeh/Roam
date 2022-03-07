@@ -1,0 +1,76 @@
+#sidenav{
+  width: 10vw;
+  position: fixed;
+  top: 0vh;
+  left: 0vh;
+  bottom: 0vh;
+  transition: width .15s;
+  outline: none;
+  z-index: 100;
+  background-color: rgb(22 28 29);
+  padding: 2rem;
+  border-radius: 0 1rem 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#sidenav:is(:hover, :focus, :active, :focus-within){
+  width: 20vw;
+}
+
+.navEntry{
+  transition: all 0.15s;
+  background-color: transparent;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 1rem;
+  padding: 1rem;
+  outline: none;
+  box-shadow: 0px 0px rgb(1,180,228);
+}
+
+.navEntry:is(:hover, :focus, :active){
+  transform: scale(0.95);
+  box-shadow: 0px 0px 0px 3px white;
+}
+
+.navEntry i {font-size: 1.3em;}
+
+.navText {
+  display: inline-block;
+  transform: scaleX(0);
+  opacity: 0;
+  transition: all 0.15s;
+}
+
+#sidenav:is(:hover, :focus, :active, :focus-within) .navEntry .navText{
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+#sidenav:is(:hover, :focus, :active, :focus-within) .navEntry{
+  background-image: linear-gradient(to right, rgb(30, 213, 169) 0%, rgb(1, 180, 228) 100%);
+}
+
+#pageContent{
+  display:flex;
+  flex-direction: column;
+  margin-left: 10vw;
+  height:100%;
+  overflow-y: scroll;
+}
+
+#navLogo{
+  background-image: url(https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg);
+  height:4rem;
+  backgroud-size:contain;
+  width:100%;
+  background-repeat: no-repeat;
+  background-position: left;
+}

@@ -1,0 +1,18 @@
+@import url('https://fonts.cdnfonts.com/css/brandon-grotesque');
+@import url('http://fonts.cdnfonts.com/css/source-sans-pro');
+
+
+* {
+  font-family: "Source Sans Pro";
+  font-weight: 700;
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+}

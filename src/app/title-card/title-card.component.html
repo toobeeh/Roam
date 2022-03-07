@@ -1,0 +1,25 @@
+<!-- cover container -->
+<div tabindex="0"
+  style="background-image: url(https://image.tmdb.org/t/p/w440_and_h660_face/{{title.poster_path}})"
+  class="homePoster"
+  [ngClass]="{'big':big==true}"
+  (click)="router.navigate([type == 'Movie' ? '/movie/' + title.id : ''])"
+  (keydown.enter)="router.navigate([type == 'Movie' ? '/movie/' + title.id : ''])"
+>
+
+  <!-- cover badge -->
+  <div *ngIf="details" class="typeBadge">{{type}}</div>
+  <div *ngIf="details" [style]="'background-color: hsl(' + (rating * 10) + ', 100%, 40%)'" class="ratingBadge">
+    {{rating}}
+    <i class="material-icons-round" style="font-size: 1em; position: relative; top: 0.1rem;">star</i></div>
+</div>
+
+<!-- caption -->
+<div class="caption">
+  {{caption}}
+
+  <!-- date caption -->
+  <div class="date">
+    {{date}}
+  </div>
+</div>
