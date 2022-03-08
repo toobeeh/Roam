@@ -40,6 +40,18 @@ export class MovieComponent implements OnInit, OnDestroy {
       GridNav.navGrid!.overflowRight = this.navgrid;
       this.navgrid.overflowLeft = GridNav.navGrid;
       this.navgrid.listen();
+
+      document.addEventListener("fullscreenchange", ()=>{
+        this.navgrid.activeElement = this.navgrid.elements[0];
+        this.navgrid.stop();
+        this.navgrid.listen();
+      });
+
+      document.querySelector("iframe")?.addEventListener("focus", (e)=>{
+        setTimeout(()=>{
+          if(document.activeElement == e.target) (e.target as HTMLElement).requestFullscreen();
+        },2000);
+      });
     });
   }
 
