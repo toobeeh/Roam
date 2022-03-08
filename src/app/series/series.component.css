@@ -8,6 +8,8 @@
 
 #backdrop{
   position: relative;
+  min-height: 80vh;
+  width: 100%;
 }
 
 #backdrop img{

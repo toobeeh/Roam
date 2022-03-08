@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieResponse, ShowResponse } from 'moviedb-promise/dist/request-types';
 import { TmdbAPIService } from '../tmdb-api.service';
@@ -12,12 +11,11 @@ import { TmdbAPIService } from '../tmdb-api.service';
 export class SeriesComponent implements OnInit {
 
   seriesID!: number;
-  playerURL: SafeResourceUrl = "";
   series!: ShowResponse;
   cast?: string = "";
   genres?: string = "";
 
-  constructor(private activatedRoute: ActivatedRoute, public router: Router, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer) { }
+  constructor(private activatedRoute: ActivatedRoute, public router: Router, private tmdbService: TmdbAPIService) { }
 
   ngOnInit(): void {
     (document.querySelector("h1") as HTMLElement).focus();
