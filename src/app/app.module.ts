@@ -10,6 +10,7 @@ import { TitleCardComponent } from './title-card/title-card.component';
 import { MovieComponent } from './movie/movie.component';
 import { SeriesComponent } from './series/series.component';
 import { SeasonComponent } from './season/season.component';
+import { EpisodeComponent } from './episode/episode.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SeasonComponent } from './season/season.component';
     TitleCardComponent,
     MovieComponent,
     SeriesComponent,
-    SeasonComponent
+    SeasonComponent,
+    EpisodeComponent
   ],
   imports: [
     BrowserModule,

@@ -25,3 +25,39 @@
   flex-direction: column;
   justify-content:end;
 }
+
+#episodesContainer{
+  display:grid;
+  grid-template-columns: repeat(5,1fr);
+  gap:1rem;
+  margin:2rem;
+  flex-wrap: wrap;
+}
+
+#episodesContainer > div {
+  background-image: linear-gradient(to right, rgb(30, 213, 169) 0%, rgb(1, 180, 228) 100%);
+  padding:.7rem;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1rem;
+  padding-left: .2rem;
+  gap:.5rem;
+  transition: transform .2s;
+}
+
+#episodesContainer > div:is(:active, :focus, :hover){
+  transform: scale(0.95);
+  outline: 4px solid white;
+}
+
+#episodesContainer > div > span:first-child{
+  font-size:3rem;
+  opacity:.6;
+}
+#episodesContainer > div > span:last-child{
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  flex-grow:2;
+}

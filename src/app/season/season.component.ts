@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ShowResponse, TvResult, TvSeasonRequest, TvSeasonResponse } from 'moviedb-promise/dist/request-types';
+import { ShowResponse, TvSeasonResponse } from 'moviedb-promise/dist/request-types';
+import { GridNav } from '../grid-nav';
 import { TmdbAPIService } from '../tmdb-api.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { TmdbAPIService } from '../tmdb-api.service';
   templateUrl: './season.component.html',
   styleUrls: ['./season.component.css']
 })
-export class SeasonComponent implements OnInit {
+export class SeasonComponent implements OnInit, OnDestroy {
 
   seriesID!: number;
   seasonID!: number;
@@ -17,6 +18,7 @@ export class SeasonComponent implements OnInit {
   season!: TvSeasonResponse;
   series!: ShowResponse;
   cast?: string = "";
+  navgrid!: GridNav;
 
   constructor(private activatedRoute: ActivatedRoute, public router: Router, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer) { }
 
@@ -33,7 +35,17 @@ export class SeasonComponent implements OnInit {
       this.series = tvinfo;
       this.season = info;
       this.cast = (await this.tmdbService.api.seasonCredits({season_number: this.seasonID!, id: this.seriesID})).cast?.slice(0,4).map(c => c.name + " (" + c.character + ")").join(", ");
+
+       /* init nav grid */
+       this.navgrid = new GridNav("app-season");
+       GridNav.navGrid!.stop();
+       GridNav.navGrid!.overflowRight = this.navgrid;
+       this.navgrid.overflowLeft = GridNav.navGrid;
+       this.navgrid.listen();
     });
   }
 
+  ngOnDestroy(): void {
+    this.navgrid.stop();
+  }
 }

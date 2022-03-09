@@ -1,0 +1,29 @@
+*{
+  color: white;
+}
+
+:host(app-movie){
+  position:relative;
+}
+
+#backdrop{
+  position: relative;
+}
+
+#backdrop img{
+  width:100%;
+}
+
+#backdrop > div{
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8102591378348214) 50%, rgba(0,0,0,0.2) 100%);
+  position: absolute;
+  inset: 0;
+  padding:3rem;
+  display:flex;
+  flex-direction: column;
+  justify-content:end;
+}
+
+#movieContent{
+  position: absolute;
+}

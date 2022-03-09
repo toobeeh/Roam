@@ -1,0 +1,40 @@
+<!-- head area with background image and gradient -->
+<div id="backdrop" tabindex="0">
+
+  <!-- background poster -->
+  <img src="https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/{{episode.still_path}}">
+
+  <!-- title infos -->
+  <div>
+
+    <!-- episode name -->
+    <h1 style="font-size:3rem; font-weight:500; font-family: 'Brandon Grotesque'; letter-spacing: .07rem">
+      {{episode.name}}
+
+      <!-- season/show name -->
+      <h2 style="font-size:2rem; font-weight:500; font-family: 'Brandon Grotesque'; letter-spacing: .07rem">
+        {{series.name}} - {{season.name}}
+      </h2>
+    </h1>
+
+    <!-- episode desc -->
+    <div style="width:40%; font-weight:500; margin: 1rem">{{episode.overview}}</div>
+
+    <!-- episode details grid -->
+    <div style="width:40%; font-weight:500; place-content: center; margin: 1rem; display:grid; grid-template-columns:repeat(4,1fr); gap: 1rem; opacity: .5; font-size:smaller">
+      <div><i class="material-icons-round">event</i> {{episode.air_date}}</div>
+      <div style="text-transform: uppercase"><i class="material-icons-round">translate</i> {{series.original_language}}</div>
+      <div style="text-transform: uppercase"><i class="material-icons-round">star</i> {{episode.vote_average}} / 10</div>
+      <div style="grid-column-start: 1; grid-column-end: 5">{{cast}}</div>
+    </div>
+  </div>
+</div>
+
+<!-- hint -->
+<div style="text-align:center; padding: 2rem; opacity:.5; font-weight:800; letter-spacing: 0.05rem;">Use the embed below to stream the movie from a third-party host. Popup-Blocker recommended.</div>
+
+<!-- player iframe -->
+<iframe tabindex="0" style="width:80%; border: none; height:50vh; margin: 10%; margin-top: 2rem; border-radius: 1.5rem;"
+  allowfullscreen
+  [src]="playerURL"
+></iframe>

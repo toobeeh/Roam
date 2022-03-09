@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EpisodeComponent } from './episode/episode.component';
 import { HomeComponent } from './home/home.component';
 import { MovieComponent } from './movie/movie.component';
 import { SearchComponent } from './search/search.component';
@@ -22,6 +23,9 @@ const routes: Routes = [
   },{
     path: "series/:seriesid/season/:seasonid",
     component: SeasonComponent
+  },{
+    path: "series/:seriesid/season/:seasonid/episode/:episodeid",
+    component: EpisodeComponent
   }
 ];
 

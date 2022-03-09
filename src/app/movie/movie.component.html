@@ -8,16 +8,16 @@
   <div>
 
     <!-- movie name -->
-    <h1 style="font-size:3rem; font-weight:800; font-family: 'Brandon Grotesque'; letter-spacing: .07rem">{{movie.title}}</h1>
+    <h1 style="font-size:3rem; font-weight:500; font-family: 'Brandon Grotesque'; letter-spacing: .07rem">{{movie.title}}</h1>
 
     <!-- genres -->
-    <div style="width:40%; font-weight:800; margin: 1rem; opacity: .8; font-size: medium">{{genres}}</div>
+    <div style="width:40%; font-weight:500; margin: 1rem; opacity: .8; font-size: medium">{{genres}}</div>
 
     <!-- movie desc -->
     <div style="width:40%; font-weight:500; margin: 1rem">{{movie.overview}}</div>
 
     <!-- movie details grid -->
-    <div style="width:40%; font-weight:500; place-content: center; margin: 1rem; display:grid; grid-template-columns:repeat(4,1fr); gap: 1rem; opacity: .5; font-size:small">
+    <div style="width:40%; font-weight:500; place-content: center; margin: 1rem; display:grid; grid-template-columns:repeat(4,1fr); gap: 1rem; opacity: .5; font-size:smaller">
       <div><i class="material-icons-round">hourglass_empty</i> {{movie.runtime}} min</div>
       <div><i class="material-icons-round">event</i> {{movie.release_date}}</div>
       <div style="text-transform: uppercase"><i class="material-icons-round">translate</i> {{movie.original_language}}</div>
