@@ -1,27 +1,23 @@
-# TmdbStreamer
+# TMDB: Roam
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
+My take on a movie/series browsing website with third-party stream integration.  
+All other platforms that i found were either using the same template or are just ugly and bloated.
 
-## Development server
+**The big bonus on this is that it works with FireTV/AndroidTV**, which makes it incredibly more useful on streaming devices.  
+~~Finally - free unbloated series just a click away on my FireTV :))~~ jk I pay subs for Netflix, Disney, Amazon, HBO, Adultswim and Sky of course
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The two APIs used are the incredbly fun-to-work and full-featured TMDB.org API and the widely used video scraper embed service 2embed.ru, which is used to embed the movie/series.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Usage
+### On the PC
+I host the current stable version on [my homeserver](https://roam.tobeh.host).  
+### On the FireTV
+In order to use it on FireTV (Browser won't work for arrow navigation!), download Amazon's Web-App-Tester and enter the URL there.  
+Navigation works just comfortable with the remote.  
+  
+As soon as an episode / movie is selected and the player is opened, it's a bit hacky to start since it doesn't support the FireTV remote buttons.  
+Keep holding the arrow-down button (a frame around the player should appear) and press the middle button.  
+That's the part where without adblock an popup tries to open, just click the backbutton to abort.  
+Now you can focus the play button with the arrow buttons and start/stop the stream or scroll forward/backwards.  
+  
+Eventualy, I'll build an package for Android some time, which may feature some optimizations on the video embed.
