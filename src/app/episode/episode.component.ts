@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Episode, MovieResponse, ShowResponse, TvResult, TvSeasonResponse } from 'moviedb-promise/dist/request-types';
 import { GridNav } from '../grid-nav';
 import { TmdbAPIService } from '../tmdb-api.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-episode',
@@ -22,7 +23,7 @@ export class EpisodeComponent implements OnInit, OnDestroy {
   cast?: string = "";
   navgrid!: GridNav;
 
-  constructor(private activatedRoute: ActivatedRoute, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer) {  }
+  constructor(private activatedRoute: ActivatedRoute, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer, private us: UserService) {  }
 
   ngOnInit(): void {
 
@@ -61,6 +62,8 @@ export class EpisodeComponent implements OnInit, OnDestroy {
           location.href = (e.target as any).src;
         },500);
       });
+
+      this.us.addRecent({id: this.seriesID.toString(), season: this.seasonID});
     });
   }
 

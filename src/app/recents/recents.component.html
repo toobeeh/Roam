@@ -1,0 +1,8 @@
+<div id="recentsSection" style="width: 100%; height: 100%; gap:5rem; position: relative;">
+  <div style="color:white; text-align: center; margin:2rem; font-size:1.2rem; ">browse your recently watched series & movies</div>
+  <div id="recentsResults">
+
+    <!-- all sorted cards -->
+    <app-title-card [big]="true" [details]="true" *ngFor="let res of resultsAll" [title]="res"></app-title-card>
+  </div>
+</div>

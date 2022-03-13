@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieResponse, MovieResult } from 'moviedb-promise/dist/request-types';
 import { GridNav } from '../grid-nav';
 import { TmdbAPIService } from '../tmdb-api.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-movie',
@@ -19,7 +20,7 @@ export class MovieComponent implements OnInit, OnDestroy {
   genres?: string = "";
   navgrid!: GridNav;
 
-  constructor(private activatedRoute: ActivatedRoute, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer) {  }
+  constructor(private activatedRoute: ActivatedRoute, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer, public us: UserService) {  }
 
   ngOnInit(): void {
 
@@ -51,6 +52,8 @@ export class MovieComponent implements OnInit, OnDestroy {
           location.href = (e.target as any).src;
         },500);
       });
+
+      this.us.addRecent({id: this.movieID.toString()});
     });
   }
 

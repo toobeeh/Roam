@@ -20,6 +20,13 @@
         <span class="navText">Home</span>
       </a>
 
+      <!-- recent -->
+      <a class="navEntry" tabindex="0" (keydown.enter)="this.router.navigate(['recent'])"
+        (click)="this.router.navigate(['recent'])">
+        <i class="material-icons-round">manage_search</i>
+        <span class="navText">Recent</span>
+      </a>
+
       <!-- search -->
       <a class="navEntry" tabindex="0" (keydown.enter)="this.router.navigate(['search'])"
         (click)="this.router.navigate(['search'])">

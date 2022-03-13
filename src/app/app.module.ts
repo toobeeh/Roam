@@ -11,6 +11,7 @@ import { MovieComponent } from './movie/movie.component';
 import { SeriesComponent } from './series/series.component';
 import { SeasonComponent } from './season/season.component';
 import { EpisodeComponent } from './episode/episode.component';
+import { RecentsComponent } from './recents/recents.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { EpisodeComponent } from './episode/episode.component';
     MovieComponent,
     SeriesComponent,
     SeasonComponent,
-    EpisodeComponent
+    EpisodeComponent,
+    RecentsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,16 @@
+:host(app-recents){
+  flex-grow:2;
+  width: 100%;
+}
+
+::placeholder{color: white;}
+
+#recentsResults{
+  padding-left: 2rem;
+  width:100%;
+  flex-grow: 1;
+  display: grid;
+  gap: 2rem;
+  place-content: center;
+  grid-template-columns: repeat(5, 1fr);
+}
