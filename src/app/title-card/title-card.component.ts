@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MovieResult, TvResult, TvSeasonResponse } from 'moviedb-promise/dist/request-types';
+import { MovieResult, ShowResponse, TvResult, TvSeasonResponse } from 'moviedb-promise/dist/request-types';
 
 @Component({
   selector: 'app-title-card',
@@ -9,13 +9,13 @@ import { MovieResult, TvResult, TvSeasonResponse } from 'moviedb-promise/dist/re
 })
 export class TitleCardComponent implements OnInit {
 
-  @Input() title!: TvResult | MovieResult | TvSeasonResponse;
+  @Input() type!: "movie" | "series";
+  @Input() title!: ShowResponse | MovieResult;
   @Input() big: boolean = false;
   @Input() details: boolean = false;
 
   caption: string = "";
   date: string = "";
-  type: string = "";
   rating: number = 0;
 
   constructor(public router: Router) {
@@ -24,14 +24,12 @@ export class TitleCardComponent implements OnInit {
   alert = (x:any) => alert(x)
 
   ngOnInit(): void {
-    const asTv = this.title as TvResult;
+    const asTv = this.title as ShowResponse;
     const asMovie = this.title as MovieResult;
-    const asSeason = this.title as TvSeasonResponse;
-    this.type = asTv.name?.length ? "Series" : "Movie";
 
     if(this.details == true){
-      this.caption = asTv.name ? asTv.name : asMovie.title ? asMovie.title : "";
-      this.date = asTv.first_air_date ? asTv.first_air_date : asMovie.release_date ? asMovie.release_date : "";
+      this.caption = this.type == "movie" ? asMovie.title! : asTv.name!;
+      this.date = this.type == "movie" ? asMovie.release_date! : asTv.first_air_date!;
       this.rating = asMovie.vote_average!;
     }
   }

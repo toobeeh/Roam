@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShowResponse } from 'moviedb-promise/dist/request-types';
 import { GridNav } from '../grid-nav';
@@ -17,7 +18,7 @@ export class SeriesComponent implements OnInit {
   genres?: string = "";
   navgrid!: GridNav;
 
-  constructor(private activatedRoute: ActivatedRoute, public router: Router, private tmdbService: TmdbAPIService) { }
+  constructor(private activatedRoute: ActivatedRoute, public router: Router, private tmdbService: TmdbAPIService,  private ts: Title) { }
 
   ngOnInit(): void {
     (document.querySelector("h1") as HTMLElement).focus();
@@ -34,6 +35,8 @@ export class SeriesComponent implements OnInit {
       GridNav.navGrid!.overflowRight = this.navgrid;
       this.navgrid.overflowLeft = GridNav.navGrid;
       this.navgrid.listen();
+
+      this.ts.setTitle(this.series.name! + " | Roam");
     });
   }
 

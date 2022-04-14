@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MovieResult, TvResult, TvSeasonResponse } from 'moviedb-promise/dist/request-types';
+import { MovieResult, ShowResponse, TvResult, TvSeasonResponse } from 'moviedb-promise/dist/request-types';
 import { GridNav } from '../grid-nav';
 import { TmdbAPIService } from '../tmdb-api.service';
 import { UserService } from '../user.service';
@@ -11,7 +11,7 @@ import { UserService } from '../user.service';
 })
 export class RecentsComponent implements OnInit, OnDestroy {
 
-  resultsAll: Array<TvSeasonResponse | MovieResult> = [];
+  resultsAll: Array<{type: "movie" | "series", title: ShowResponse | MovieResult}> = [];
   gridnav?: GridNav;
 
   constructor(private tmdbApi: TmdbAPIService, private userService: UserService) {
@@ -22,8 +22,8 @@ export class RecentsComponent implements OnInit, OnDestroy {
     /* load recents */
     const recents = this.userService.getRecents().slice(0,50);
     for(let recent of recents){
-      if(recent.season) this.resultsAll.push(await this.tmdbApi.api.seasonInfo({season_number: recent.season, id: recent.id}));
-      else this.resultsAll.push(await this.tmdbApi.api.movieInfo(recent.id));
+      if(recent.type == "series") this.resultsAll.push({type: "series", title: await this.tmdbApi.api.tvInfo(recent.id)});
+      else this.resultsAll.push({type: "movie", title: await this.tmdbApi.api.movieInfo(recent.id)});
     }
 
     /* start timeout after element add cooldown */

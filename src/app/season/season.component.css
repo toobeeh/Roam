@@ -44,6 +44,7 @@
   padding-left: .2rem;
   gap:.5rem;
   transition: transform .2s;
+  cursor: pointer;
 }
 
 #episodesContainer > div:is(:active, :focus, :hover){
@@ -60,4 +61,17 @@
   font-size: 1.2rem;
   font-weight: 700;
   flex-grow:2;
+}
+
+h1 > span {
+  display: inline-block;
+  cursor: pointer;
+  transition: all .2s;
+  padding: .5rem;
+}
+
+h1 > span:is(:active, :focus, :hover){
+  border-radius: .2rem;
+  transform: scale(0.95);
+  outline: 4px solid white;
 }

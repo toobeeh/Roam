@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShowResponse, TvSeasonResponse } from 'moviedb-promise/dist/request-types';
 import { GridNav } from '../grid-nav';
@@ -20,7 +20,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
   cast?: string = "";
   navgrid!: GridNav;
 
-  constructor(private activatedRoute: ActivatedRoute, public router: Router, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer) { }
+  constructor(private activatedRoute: ActivatedRoute, public router: Router, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer, private ts: Title) { }
 
   ngOnInit(): void {
     (document.querySelector("h1") as HTMLElement).focus();
@@ -42,6 +42,8 @@ export class SeasonComponent implements OnInit, OnDestroy {
        GridNav.navGrid!.overflowRight = this.navgrid;
        this.navgrid.overflowLeft = GridNav.navGrid;
        this.navgrid.listen();
+
+       this.ts.setTitle(this.series.name! + " S" + this.seasonID + " | Roam");
     });
   }
 

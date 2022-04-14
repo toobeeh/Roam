@@ -3,6 +3,6 @@
   <div id="recentsResults">
 
     <!-- all sorted cards -->
-    <app-title-card [big]="true" [details]="true" *ngFor="let res of resultsAll" [title]="res"></app-title-card>
+    <app-title-card [big]="true" [details]="true" *ngFor="let res of resultsAll" [title]="res.title" [type]="res.type"></app-title-card>
   </div>
 </div>

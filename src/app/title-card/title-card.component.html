@@ -3,8 +3,8 @@
   style="background-image: url(https://image.tmdb.org/t/p/w440_and_h660_face/{{title.poster_path}})"
   class="homePoster"
   [ngClass]="{'big':big==true}"
-  (click)="router.navigate([type == 'Movie' ? '/movie/' + title.id : '/series/' + title.id])"
-  (keydown.enter)="router.navigate([type == 'Movie' ? '/movie/' + title.id : '/series/' + title.id])"
+  (click)="router.navigate([type == 'movie' ? '/movie/' + title.id : '/series/' + title.id])"
+  (keydown.enter)="router.navigate([type == 'movie' ? '/movie/' + title.id : '/series/' + title.id])"
 >
 
   <!-- cover badge -->

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, Sanitizer, SecurityContext } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { MovieResponse, MovieResult } from 'moviedb-promise/dist/request-types';
 import { GridNav } from '../grid-nav';
@@ -20,7 +20,7 @@ export class MovieComponent implements OnInit, OnDestroy {
   genres?: string = "";
   navgrid!: GridNav;
 
-  constructor(private activatedRoute: ActivatedRoute, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer, public us: UserService) {  }
+  constructor(private activatedRoute: ActivatedRoute, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer, public us: UserService, private ts: Title) {  }
 
   ngOnInit(): void {
 
@@ -53,7 +53,10 @@ export class MovieComponent implements OnInit, OnDestroy {
         },500);
       });
 
-      this.us.addRecent({id: this.movieID.toString()});
+      this.us.addRecent({id: this.movieID.toString(), type: "movie"});
+
+
+      this.ts.setTitle(this.movie.title! + " | Roam");
     });
   }
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 interface recent {
   id: string;
-  season?: number;
+  type: "movie" | "series";
 }
 
 @Injectable({
@@ -14,13 +14,11 @@ export class UserService {
 
   addRecent(entry: recent){
     let recents = this.getRecents();
-    recents = recents.filter(recent => {
-      if(recent.id != entry.id) {
-        if(!recent.season && !entry.season) return true;
-        else return recent.season != entry.season;
-      }
-      else return false;
-    });
+
+    /* remove if present */
+    recents = recents.filter(recent => !(recent.type == entry.type && recent.id == entry.id));
+
+    /* add on top */
     recents.unshift(entry);
     this.setRecents(recents);
   }

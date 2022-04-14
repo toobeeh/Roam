@@ -13,7 +13,10 @@
 
       <!-- season/show name -->
       <h2 style="font-size:2rem; font-weight:500; font-family: 'Brandon Grotesque'; letter-spacing: .07rem">
-        {{series.name}} - {{season.name}}
+        <span tabindex="0"
+        (click)="router.navigate(['/series/' + series.id + '/season/' + seasonID])"
+        (keydown.enter)="router.navigate(['/series/' + series.id + '/season/' + seasonID])"
+        >{{series.name}} - {{season.name}}</span>
       </h2>
     </h1>
 

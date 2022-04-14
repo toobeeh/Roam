@@ -9,7 +9,7 @@
   </div>
 
   <!-- series cards -->
-  <app-title-card *ngFor="let tv of popularTV" [title]="tv"></app-title-card>
+  <app-title-card *ngFor="let tv of popularTV" [title]="tv" type="series"></app-title-card>
 
   <!-- movies group -->
   <div class="homeGroupWrap">
@@ -19,7 +19,7 @@
   </div>
 
   <!-- series cards -->
-  <app-title-card *ngFor="let mv of popularMovies" [title]="mv"></app-title-card>
+  <app-title-card *ngFor="let mv of popularMovies" [title]="mv" type="movie"></app-title-card>
 
   <!-- banner -->
   <div id="homeLogoContainer"></div>

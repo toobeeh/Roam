@@ -27,3 +27,17 @@
 #movieContent{
   position: absolute;
 }
+
+
+h1 span {
+  display: inline-block;
+  cursor: pointer;
+  transition: all .2s;
+  padding: .5rem;
+}
+
+h1 span:is(:active, :focus, :hover){
+  border-radius: .2rem;
+  transform: scale(0.95);
+  outline: 4px solid white;
+}

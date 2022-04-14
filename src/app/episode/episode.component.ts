@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl, Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Episode, MovieResponse, ShowResponse, TvResult, TvSeasonResponse } from 'moviedb-promise/dist/request-types';
 import { GridNav } from '../grid-nav';
 import { TmdbAPIService } from '../tmdb-api.service';
@@ -23,7 +23,7 @@ export class EpisodeComponent implements OnInit, OnDestroy {
   cast?: string = "";
   navgrid!: GridNav;
 
-  constructor(private activatedRoute: ActivatedRoute, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer, private us: UserService) {  }
+  constructor(private activatedRoute: ActivatedRoute, public router: Router, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer, private us: UserService, private ts: Title) {  }
 
   ngOnInit(): void {
 
@@ -63,7 +63,9 @@ export class EpisodeComponent implements OnInit, OnDestroy {
         },500);
       });
 
-      this.us.addRecent({id: this.seriesID.toString(), season: this.seasonID});
+      this.us.addRecent({id: this.seriesID.toString(), type: "series"});
+
+      this.ts.setTitle(this.series.name! + " S" + this.seasonID + "E" + this.episodeID + " | Roam");
     });
   }
 
