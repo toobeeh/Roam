@@ -38,7 +38,7 @@ export class MovieComponent implements OnInit, OnDestroy {
       this.movieID = Number(data["id"]);
       const info = await this.tmdbService.api.movieInfo(this.movieID);
       this.movie = info;
-      this.playerURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.2embed.ru/embed/tmdb/movie?id=' + this.movie.id);
+      this.playerURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.2embed.to/embed/tmdb/movie?id=' + this.movie.id);
       this.cast = (await this.tmdbService.api.movieCredits(this.movieID)).cast?.slice(0,4).map(c => c.name + " (" + c.character + ")").join(", ");
       this.genres = this.movie.genres?.map(g => g.name).join(", ");
 

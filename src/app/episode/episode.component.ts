@@ -48,7 +48,7 @@ export class EpisodeComponent implements OnInit, OnDestroy {
       this.episode = await this.tmdbService.api.episodeInfo(epReq);
 
       this.playerURL = this.sanitizer.bypassSecurityTrustResourceUrl(
-        'https://www.2embed.ru/embed/tmdb/tv?id=' + this.seriesID + "&s=" + this.seasonID + "&e=" + this.episodeID
+        'https://www.2embed.to/embed/tmdb/tv?id=' + this.seriesID + "&s=" + this.seasonID + "&e=" + this.episodeID
       );
       this.cast = (await this.tmdbService.api.episodeCredits(epReq)).cast?.slice(0,4).map(c => c.name + " (" + c.character + ")").join(", ");
 
