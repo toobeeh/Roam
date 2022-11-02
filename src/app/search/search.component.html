@@ -4,7 +4,7 @@
   <div id="searchResults">
 
     <!-- all sorted cards -->
-    <app-title-card [big]="true" [details]="true" *ngFor="let res of resultsAll" [title]="res"></app-title-card>
+    <app-title-card [big]="true" [details]="true" *ngFor="let res of resultsAll" [title]="res" [type]="res.media_type == 'tv' ? 'series' : 'movie'"></app-title-card>
 
     <!-- tv cards -->
     <!-- <app-title-card [big]="true" [details]="true" *ngFor="let res of resultsTv" [title]="res"></app-title-card> -->
