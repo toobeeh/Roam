@@ -23,7 +23,7 @@ export class EpisodeComponent implements OnInit, OnDestroy {
   cast?: string = "";
   navgrid!: GridNav;
 
-  constructor(private activatedRoute: ActivatedRoute, public router: Router, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer, private us: UserService, private ts: Title) {  }
+  constructor(private activatedRoute: ActivatedRoute, public router: Router, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer, private us: UserService, private ts: Title) { }
 
   ngOnInit(): void {
 
@@ -43,27 +43,27 @@ export class EpisodeComponent implements OnInit, OnDestroy {
       this.episodeID = Number(data["episodeid"]);
 
       this.series = await this.tmdbService.api.tvInfo(this.seriesID);
-      this.season = await this.tmdbService.api.seasonInfo({season_number: this.seasonID, id: this.seriesID});
-      const epReq = {season_number: this.seasonID, episode_number: this.episodeID, id: this.seriesID};
+      this.season = await this.tmdbService.api.seasonInfo({ season_number: this.seasonID, id: this.seriesID });
+      const epReq = { season_number: this.seasonID, episode_number: this.episodeID, id: this.seriesID };
       this.episode = await this.tmdbService.api.episodeInfo(epReq);
 
       this.playerURL = this.sanitizer.bypassSecurityTrustResourceUrl(
-        'https://www.2embed.to/embed/tmdb/tv?id=' + this.seriesID + "&s=" + this.seasonID + "&e=" + this.episodeID
+        'https://embed.smashystream.com/playere.php?tmdb=' + this.seriesID + "&season=" + this.seasonID + "&episode=" + this.episodeID
       );
-      this.cast = (await this.tmdbService.api.episodeCredits(epReq)).cast?.slice(0,4).map(c => c.name + " (" + c.character + ")").join(", ");
+      this.cast = (await this.tmdbService.api.episodeCredits(epReq)).cast?.slice(0, 4).map(c => c.name + " (" + c.character + ")").join(", ");
 
-      document.addEventListener("fullscreenchange", ()=>{
+      document.addEventListener("fullscreenchange", () => {
         this.navgrid.activeElement = this.navgrid.elements[0];
         this.navgrid.activeElement.focus();
       });
 
-      document.querySelector("iframe")?.addEventListener("focus", (e)=>{
-        setTimeout(()=>{
+      document.querySelector("iframe")?.addEventListener("focus", (e) => {
+        setTimeout(() => {
           location.href = (e.target as any).src;
-        },500);
+        }, 500);
       });
 
-      this.us.addRecent({id: this.seriesID.toString(), type: "series"});
+      this.us.addRecent({ id: this.seriesID.toString(), type: "series" });
 
       this.ts.setTitle(this.series.name! + " S" + this.seasonID + "E" + this.episodeID + " | Roam");
     });

@@ -20,7 +20,7 @@ export class MovieComponent implements OnInit, OnDestroy {
   genres?: string = "";
   navgrid!: GridNav;
 
-  constructor(private activatedRoute: ActivatedRoute, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer, public us: UserService, private ts: Title) {  }
+  constructor(private activatedRoute: ActivatedRoute, private tmdbService: TmdbAPIService, public sanitizer: DomSanitizer, public us: UserService, private ts: Title) { }
 
   ngOnInit(): void {
 
@@ -38,22 +38,22 @@ export class MovieComponent implements OnInit, OnDestroy {
       this.movieID = Number(data["id"]);
       const info = await this.tmdbService.api.movieInfo(this.movieID);
       this.movie = info;
-      this.playerURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.2embed.to/embed/tmdb/movie?id=' + this.movie.id);
-      this.cast = (await this.tmdbService.api.movieCredits(this.movieID)).cast?.slice(0,4).map(c => c.name + " (" + c.character + ")").join(", ");
+      this.playerURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://embed.smashystream.com/playere.php?tmdb=' + this.movie.id);
+      this.cast = (await this.tmdbService.api.movieCredits(this.movieID)).cast?.slice(0, 4).map(c => c.name + " (" + c.character + ")").join(", ");
       this.genres = this.movie.genres?.map(g => g.name).join(", ");
 
-      document.addEventListener("fullscreenchange", ()=>{
+      document.addEventListener("fullscreenchange", () => {
         this.navgrid.activeElement = this.navgrid.elements[0];
         this.navgrid.activeElement.focus();
       });
 
-      document.querySelector("iframe")?.addEventListener("focus", (e)=>{
-        setTimeout(()=>{
+      document.querySelector("iframe")?.addEventListener("focus", (e) => {
+        setTimeout(() => {
           location.href = (e.target as any).src;
-        },500);
+        }, 500);
       });
 
-      this.us.addRecent({id: this.movieID.toString(), type: "movie"});
+      this.us.addRecent({ id: this.movieID.toString(), type: "movie" });
 
 
       this.ts.setTitle(this.movie.title! + " | Roam");
