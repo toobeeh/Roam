@@ -53,19 +53,22 @@ export class SearchComponent implements OnInit, OnDestroy {
   async search(text: string) {
     let search = this.thisSearch = Date.now();
 
-    setTimeout(async ()=>{
-      if(this.thisSearch != search) return;
+    setTimeout(async () => {
+      if (this.thisSearch != search) return;
 
       let searchTv = await this.tmdbApi.api.searchTv({ query: text });
       let searchMovie = await this.tmdbApi.api.searchMovie({ query: text });
       if (searchTv.results) this.resultsTv = searchTv.results.filter(res => res.poster_path);
       if (searchMovie.results) this.resultsMovie = searchMovie.results.filter(res => res.poster_path);
-      this.resultsAll = [...this.resultsMovie, ...this.resultsTv].sort((a,b) => b.popularity! - a.popularity!);
 
-      setTimeout(()=>{
+      this.resultsTv.forEach(r => r.media_type = "tv");
+
+      this.resultsAll = [...this.resultsMovie, ...this.resultsTv].sort((a, b) => b.popularity! - a.popularity!);
+
+      setTimeout(() => {
         this.gridnav?.refreshChildren();
         this.gridnav!.activeElement = this.gridnav!.elements[0];
-      },100)
+      }, 100)
     }, 250);
   }
 
